@@ -33,6 +33,7 @@ export const metadata: Metadata = {
     'Real-time Dashboards',
     'WebSocket Systems',
     'Safetik Solutions',
+    'Good Foot CMS',
     'Ebhoom',
     'OCEMS KSPCB Environmental Monitoring',
     'TypeScript Engineer',

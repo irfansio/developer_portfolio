@@ -307,6 +307,87 @@ export const featuredProjects: Project[] = [
     ],
   },
   {
+    id: 'goodfoot-cms',
+    title: 'Good Foot CMS (Sustainability Community Platform)',
+    shortTitle: 'Good Foot CMS',
+    type: 'Sustainability Community & ESG Admin Platform',
+    badge: 'ESG & Community Analytics Platform',
+    badgeColor: 'emerald',
+    summary:
+      'A React-based administrative CMS and analytics dashboard engineered for managing a sustainability-focused community platform. Unifies community engagement, user activity, eco-events, rewards, and environmental metrics.',
+    highlights: [
+      'Engineered multi-module executive dashboard with real-time KPI metrics for carbon submissions, EV rentals, ticket management, community members, and reward points.',
+      'Constructed interactive ESG Surveys & Data Collection module tracking survey completion rates, scoring analytics, and organization-level initiatives.',
+      'Developed gamified Leadership & Ranking interface with progress milestones, tier achievements, and dynamic user activity tracking.',
+      'Implemented access panels for AI-driven eco-challenge verification (e.g. plastic waste reduction), sponsor management, coupon rewards, and automated report exports.',
+    ],
+    techStack: [
+      'React 18',
+      'Create React App',
+      'React Router',
+      'Chart.js',
+      'Recharts',
+      'Tailwind CSS',
+      'REST APIs',
+    ],
+    architecture: {
+      problem:
+        'Managing community sustainability programs across corporate organizations requires unifying fragmented datasets—such as carbon offsets, EV rentals, survey feedback, and gamified challenges—into a single, high-clarity administrative dashboard.',
+      solution:
+        'Architected a modular React 18 administrative interface with normalized state flows, custom chart visualizations (Chart.js / Recharts), and granular access control routes for organization profiles and AI-verified challenges.',
+      keyComponents: [
+        'Sustainability Metrics & Carbon Submission Dashboard',
+        'ESG Surveys & Response Analytics Engine',
+        'Gamified Community Leadership & Ranking System',
+        'AI Challenge Verification & Submission Review Panel',
+        'Organization Profiling, Coupon & Reward Dispatcher',
+      ],
+      databaseModel: [
+        'Organizations: { orgId, name, type, activeSurveys, memberCount, profileSettings }',
+        'EcoChallenges: { challengeId, title: "Reduce Plastic Waste", submissions, verificationStatus }',
+        'Surveys: { surveyId, orgName, type, startDate, endDate, questionsCount, completionRate }',
+        'Leaderboard: { userId, name, rank, pointsVolume, tierLevel }',
+      ],
+      securityPatterns: [
+        'Secure token-based authentication with role-guarded routes (Admin vs Organization Coordinator)',
+        'Organization-level data partitioning ensuring multi-tenant survey isolation',
+        'Sanitized export pipelines for compliance reporting and data exports',
+      ],
+      dataFlowSummary:
+        'Admin Actions -> React Router View -> API Service Layer -> Normalized Client State -> Chart.js / Recharts Visualizations -> Access Panels.',
+    },
+    screenshots: [
+      {
+        url: '/projects/goodfoot-surveys-data.png',
+        title: 'ESG Surveys & Data Collection Dashboard',
+        caption:
+          'Survey analytics panel displaying survey creation counts, in-progress monitors, 68% response rates, average scores, and organization-specific survey management.',
+        tag: 'Surveys & ESG Analytics',
+      },
+      {
+        url: '/projects/goodfoot-leadership-rankings.png',
+        title: 'Community Leadership & Progress Rankings',
+        caption:
+          'Gamified leaderboard view featuring timeline goal milestones ($10k-$18k), ranking bars, and comprehensive user engagement tracking.',
+        tag: 'Leadership & Gamification',
+      },
+      {
+        url: '/projects/goodfoot-ai-challenge-verification.png',
+        title: 'AI Eco-Challenge Verification Panel',
+        caption:
+          'Administrative workflow for reviewing and validating community eco-challenges (e.g. Reduce Plastic Waste) with full CMS navigation tree.',
+        tag: 'AI Challenge Verification',
+      },
+    ],
+    isProtected: false,
+    stats: [
+      { label: 'Active Modules', value: '7+ Panels' },
+      { label: 'Survey Response', value: '68% Avg' },
+      { label: 'UI Architecture', value: 'React 18' },
+      { label: 'Metrics Tracked', value: 'Carbon & EV' },
+    ],
+  },
+  {
     id: 'ocems-monitoring',
     title: 'OCEMS & KSPCB Environmental Monitoring Portals',
     shortTitle: 'OCEMS Environmental Monitoring',
