@@ -166,14 +166,18 @@ export const DashboardModal: React.FC<DashboardModalProps> = ({ project, onClose
                     onClick={() => setSelectedScreenshot(shot)}
                     className="group cursor-pointer rounded-xl overflow-hidden border border-slate-800 bg-slate-950 hover:border-cyan-500/40 transition-all hover:shadow-xl hover:shadow-cyan-500/5 flex flex-col"
                   >
-                    <div className="relative aspect-video w-full bg-slate-900 overflow-hidden">
+                    <div className="relative aspect-video w-full bg-slate-950 overflow-hidden flex items-center justify-center">
                       <Image
                         src={shot.url}
                         alt={shot.title}
                         fill
-                        className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                        className={`${
+                          shot.url.includes('mobile')
+                            ? 'object-contain p-2'
+                            : 'object-cover object-top'
+                        } transition-transform duration-300 group-hover:scale-105`}
                       />
-                      <div className="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-colors" />
+                      <div className="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-colors pointer-events-none" />
                       <div className="absolute top-2.5 right-2.5 p-1.5 rounded-lg bg-slate-900/80 backdrop-blur-md text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity">
                         <Maximize2 className="w-3.5 h-3.5" />
                       </div>
@@ -399,14 +403,18 @@ export const DashboardModal: React.FC<DashboardModalProps> = ({ project, onClose
           </button>
 
           <div
-            className="relative w-full max-w-5xl max-h-[80vh] aspect-video rounded-xl overflow-hidden shadow-2xl border border-slate-700"
+            className={`relative w-full ${
+              selectedScreenshot.url.includes('mobile')
+                ? 'max-w-md h-[78vh]'
+                : 'max-w-5xl h-[75vh]'
+            } rounded-xl overflow-hidden shadow-2xl border border-slate-700 bg-slate-950 flex items-center justify-center`}
             onClick={(e) => e.stopPropagation()}
           >
             <Image
               src={selectedScreenshot.url}
               alt={selectedScreenshot.title}
               fill
-              className="object-contain"
+              className="object-contain p-2 sm:p-4"
             />
           </div>
 

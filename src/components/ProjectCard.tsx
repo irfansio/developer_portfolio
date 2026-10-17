@@ -21,6 +21,7 @@ interface ProjectCardProps {
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
   const primaryScreenshot = project.screenshots[0];
+  const isMobile = primaryScreenshot?.url?.includes('mobile');
 
   return (
     <div className="glass-card rounded-2xl border border-slate-800/90 overflow-hidden flex flex-col justify-between group hover:border-cyan-500/40 transition-all duration-300">
@@ -28,19 +29,21 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }
         {/* Project Thumbnail Image with Overlay */}
         <div
           onClick={() => onOpenModal(project)}
-          className="relative aspect-video w-full bg-slate-950 overflow-hidden cursor-pointer"
+          className="relative aspect-video w-full bg-slate-950 overflow-hidden cursor-pointer flex items-center justify-center"
         >
           {primaryScreenshot && (
             <Image
               src={primaryScreenshot.url}
               alt={project.title}
               fill
-              className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              className={`${
+                isMobile ? 'object-contain p-2' : 'object-cover object-top'
+              } transition-transform duration-500 group-hover:scale-105`}
             />
           )}
 
           {/* Dark gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+          <div className={`absolute inset-0 ${isMobile ? 'bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none' : 'bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent'}`} />
 
           {/* Badges on Top */}
           <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 pointer-events-none">

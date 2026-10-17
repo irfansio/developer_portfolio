@@ -11,7 +11,7 @@ export const developerProfile: DeveloperProfile = {
   location: 'Kerala, India (Open to Remote & Relocation)',
   status: 'Available for Full-Stack & Systems Engineering Roles',
   summary:
-    'Full-Stack Software Engineer with 3+ years of experience specializing in the MERN stack, Next.js, and real-time enterprise platforms. Hands-on expertise architecting secure RESTful APIs, high-performance dashboards, Three.js 3D web experiences, and scalable cloud architectures on AWS and Docker. Actively integrating AI assistants and interactive systems into modern web products.',
+    'Full-Stack Software Engineer with 3+ years of experience specializing in the MERN stack, Next.js, React Native, and real-time enterprise platforms. Hands-on expertise architecting secure RESTful APIs, high-performance dashboards, Three.js 3D web experiences, and scalable cloud architectures on AWS and Docker. Actively integrating AI assistants and interactive systems into modern web products.',
 };
 
 export const systemStats: SystemStat[] = [
@@ -56,6 +56,13 @@ export const competencyDomains: CompetencyDomain[] = [
         level: 'Advanced',
         highlight: 'App Router, Server Actions, SSR/SSG caching, streaming hydration',
         productionUsage: 'Used in Ebhoom and environmental monitoring client platforms for maximum TTFB speed and zero layout shifts.',
+      },
+      {
+        name: 'React Native & Expo Router',
+        category: 'Mobile Framework',
+        level: 'Production Proven',
+        highlight: 'Expo SDK 53, file-based routing (app/), bottom tab navigators, multi-step parameter flows',
+        productionUsage: 'Architected Goodfoot carbon footprint mobile application with frosted glass theme, custom Outfit typography, and JWT persistence.',
       },
       {
         name: 'TypeScript',
@@ -304,6 +311,108 @@ export const featuredProjects: Project[] = [
       { label: 'QR Scan Speed', value: '< 200ms' },
       { label: 'Safety Assets', value: 'Thousands' },
       { label: 'Map Pin Sync', value: 'Real-time' },
+    ],
+  },
+  {
+    id: 'goodfoot-mobile',
+    title: 'Goodfoot: Carbon Footprint & Sustainability App',
+    shortTitle: 'Goodfoot Mobile App',
+    type: 'Full-Stack Mobile App (React Native & Node.js/MongoDB)',
+    badge: 'Mobile App & Carbon Engine',
+    badgeColor: 'emerald',
+    summary:
+      'A sustainability mobile application designed to help people understand and reduce their environmental impact. Users estimate personal carbon emissions across transport, air travel, and electricity use, exploring eco-friendly community challenges that encourage greener everyday choices.',
+    highlights: [
+      'Engineered with React Native 0.79, Expo SDK 53, and Expo Router utilizing file-based routing under app/ with bottom tab navigation for Home, Community, and Challenges.',
+      'Constructed a 3-stage carbon footprint calculator flow (Vehicle Info -> Flight Hours -> Electricity Units) passing values through route parameters before consolidated API dispatch.',
+      'Developed dual authentication pipeline supporting Email/Password and Google OAuth with JWT token persistence in AsyncStorage.',
+      'Architected Express.js backend with Mongoose/MongoDB, applying Helmet security headers, CORS, Morgan request logging, and Express-Validator for input validation.',
+      'Implemented emission calculation engine computing carbon footprint with fixed emission factors for fuel, aviation, and electricity, returning total metric tons with India and global comparison benchmarks.',
+      'Designed dark-green eco aesthetic featuring translucent frosted-glass panels, SVG gradients, Outfit typography, and custom sustainability vector assets.',
+    ],
+    techStack: [
+      'React Native 0.79',
+      'Expo SDK 53',
+      'Expo Router',
+      'Node.js',
+      'Express.js',
+      'MongoDB & Mongoose',
+      'JWT Authentication',
+      'Google OAuth',
+      'Express-Validator',
+      'Axios',
+      'AsyncStorage',
+    ],
+    architecture: {
+      problem:
+        'Quantifying personal carbon footprints is notoriously complex, requiring tedious conversion math across disparate metrics (vehicle mileage, aviation passenger-km, kWh power usage) that dissuades everyday users from tracking their environmental impact.',
+      solution:
+        'Engineered an intuitive 3-step mobile calculation flow with Expo Router route-parameter chaining, backed by an Express/MongoDB calculation microservice that automatically applies emission factors and contextualizes results against India national and global benchmarks.',
+      keyComponents: [
+        'Expo Router File-Based Routing (app/_layout.jsx, app/(tabs)/_layout.jsx)',
+        '3-Step Footprint Assembly Flow (vehicleInfo.jsx -> flightHours.jsx -> electricity.jsx)',
+        'Emission Calculation Engine (Fuel factors, aviation multipliers, kWh rates vs India/World data)',
+        'Dual Authentication Pipeline (Bcrypt local hashing + Google OAuth token verification + JWT)',
+        'Express REST API Server (Helmet security, CORS, Morgan logging, Express-Validator, Mongoose ODM)',
+        'Frosted Glass UI Architecture (Dark green SVG gradients, translucent glass panels, Outfit typography)',
+      ],
+      databaseModel: [
+        'Users: { _id, name, email, passwordHash, googleId, avatar, createdAt }',
+        'FootprintSubmissions: { userId, vehicle: { fuelType, vehicleType, distance, efficiency }, flightHours, electricityKwh, totalEmissionKg, indiaBenchmark, worldBenchmark, timestamp }',
+        'Challenges: { challengeId, title, description, points, verificationCriteria, seedData }',
+      ],
+      securityPatterns: [
+        'Express-Validator schema verification and input sanitization on all calculation and registration endpoints',
+        'Bcrypt password hashing with salt rounds and Google Auth Library server-side token signature verification',
+        'Hardened HTTP security headers using Helmet and restricted CORS policies',
+        'JWT token caching in React Native AsyncStorage with authorization bearer header injection',
+      ],
+      dataFlowSummary:
+        'Multi-Step Input (Vehicle -> Flight -> Electricity) -> Expo Route Params -> Axios Client -> Express Gateway & Validator -> Emission Factor Math -> MongoDB -> Response with India & Global Comparisons.',
+    },
+    screenshots: [
+      {
+        url: '/projects/goodfoot-mobile-welcome.jpg',
+        title: 'GoodFoot Sustainability Splash & Onboarding',
+        caption:
+          'Welcome screen featuring custom globe vector artwork, climate action mission statement, and direct entry point into the 3-step carbon footprint calculation flow.',
+        tag: 'Mobile Splash',
+      },
+      {
+        url: '/projects/goodfoot-mobile-vehicle-step1.jpg',
+        title: 'Step 1/3: Vehicle & Fuel Emission Form',
+        caption:
+          'Interactive parameter collection for fuel type (Petrol/Diesel/CNG/EV), vehicle class, daily commute distance, and fuel efficiency metrics.',
+        tag: 'Vehicle Step 1',
+      },
+      {
+        url: '/projects/goodfoot-mobile-flight-step2.jpg',
+        title: 'Step 2/3: Aviation Travel & Flight Hours',
+        caption:
+          'Flight hours calculation screen capturing cabin class (Economy/Business) and annual flight duration with custom airplane illustrations.',
+        tag: 'Flight Step 2',
+      },
+      {
+        url: '/projects/goodfoot-mobile-electricity-step3.jpg',
+        title: 'Step 3/3: Household Electricity Units',
+        caption:
+          'Monthly electricity usage input (kWh units) with wind turbine illustration, culminating in consolidated API post to the emission calculation engine.',
+        tag: 'Electricity Step 3',
+      },
+      {
+        url: '/projects/goodfoot-mobile-login.jpg',
+        title: 'Translucent Glass Authentication Screen',
+        caption:
+          'Frosted-glass login panel supporting standard email/password authentication and single-tap Google Sign-In over rich dark green SVG gradients.',
+        tag: 'Auth & Google OAuth',
+      },
+    ],
+    isProtected: false,
+    stats: [
+      { label: 'Mobile Runtime', value: 'Expo SDK 53' },
+      { label: 'Navigation', value: 'Expo Router' },
+      { label: 'Backend API', value: 'Express + Mongo' },
+      { label: 'Auth Pipeline', value: 'JWT + Google' },
     ],
   },
   {
